@@ -82,11 +82,12 @@ Very simple react app with a couple of components. It intends to mimic the chatg
 1. Currently the entire conversation is blocked while waiting on a response, instead it should just be the input container
 
 ### Quality of Life
-1. There are commands I run that could be made into `package.json` scripts or put togething into bash scripts
+1. There are commands I run that could be made into `package.json` scripts or put together into bash scripts
 2. pylint didn't work properly in my vscode
 3. I could probably refactor some of the .py files in the backend into a single dataclass file
 4. I could make the devloop faster in case of system testing by setting up a job that executes a task whenever I tell it to and run it through the terminal rather than using the UI to do the testing
 5. More tests would make the devloop faster in some cases
+6. CI/CD workflow with github actions to run tests and quality checks in the codebase
 
 ### Testing
 1. Using asyncio and file system inputs makes testing hard because not everything is easy to mock

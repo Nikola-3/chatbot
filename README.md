@@ -187,10 +187,6 @@ These directories are automatically created when needed. You can configure their
 │   │   ├── chat.ts
 │   │   └── documents.ts
 │   │
-│   ├── utils/
-│   │   ├── formatting.ts
-│   │   └── validation.ts
-│   │
 │   ├── app.tsx
 │   └── index.tsx
 ```
@@ -223,17 +219,8 @@ These directories are automatically created when needed. You can configure their
 
 #### Components
 - **Chat**: Handles chat interface and message display
-- **Documents**: Manages document upload and processing status
-- **Common**: Reusable UI components
-
-#### Contexts
-- **ChatContext**: Manages chat state and history
-- **DocumentContext**: Handles document list and processing state
-
-#### Hooks
-- **useChat**: Chat functionality and message handling
-- **useDocuments**: Document upload and management
-- **useWebSocket**: Real-time updates for document processing
+- **Message**: Manages document upload and processing status
+- **LoadingOverlay**: Manages document upload and processing status
 
 #### Services
 - **api**: Base API configuration and helpers
@@ -241,7 +228,7 @@ These directories are automatically created when needed. You can configure their
 - **documents**: Document management API calls
 
 ### Testing
-Comprehensive test coverage for both processing and storage components, using pytest with async support.
+Some test coverage for both processing and storage components, using pytest with async support.
 
 ## Dependencies
 - OpenAI API for embeddings and chat completions

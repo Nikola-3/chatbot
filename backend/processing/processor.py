@@ -61,11 +61,9 @@ class DocumentProcessor:
         """Extract text from document content"""
         await self.storage.metadata.update_document_status(doc_id, DocumentStatus.EXTRACTING.value)
         try:
-            print('here')
             elements = partition(file=BytesIO(contents))
             return "\n\n".join([str(el) for el in elements])
         except Exception as e:
-            print('here')
             raise ExtractionError(f"Text extraction failed: {str(e)}") from e
 
 

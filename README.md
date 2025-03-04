@@ -2,32 +2,6 @@
 
 This is a React application that implements a Retrieval-Augmented Generation (RAG) chatbot. The chatbot is designed to provide enhanced responses by retrieving relevant information from a backend service.
 
-## Project Structure
-
-```
-chatbot
-├── backend
-│   └── server.js           # Backend server file
-├── public
-│   ├── index.html          # Main HTML file for the React application
-│   ├── manifest.json       # Metadata for Progressive Web App features
-│   ├── icon-192x192.png    # Placeholder icon file (192x192)
-│   └── icon-512x512.png    # Placeholder icon file (512x512)
-├── src
-│   ├── components          # Contains React components
-│   │   ├── chatbot.tsx     # Main chatbot interface component
-│   │   └── message.tsx     # Component for individual chat messages
-│   ├── services            # Contains API service functions
-│   │   └── api.ts          # Functions for making API calls
-│   ├── app.tsx             # Main application component
-│   ├── index.tsx           # Entry point for the React application
-│   └── styles              # Contains CSS styles
-│       └── app.css         # Styles for the application
-├── package.json            # npm configuration file
-├── tsconfig.json           # TypeScript configuration file
-└── README.md               # Project documentation
-```
-
 ## Setup Instructions
 
 ### Frontend
@@ -152,6 +126,129 @@ These directories are automatically created when needed. You can configure their
 
 - Interact with the chatbot by typing your queries in the input field.
 - The chatbot will respond with generated answers based on the retrieved information from the backend service.
+
+## Project Structure
+```
+├── backend/
+│   ├── __init__.py
+│   ├── processing/
+│   │   ├── __init__.py
+│   │   ├── completion_handler.py
+│   │   ├── config.py
+│   │   ├── conversation.py
+│   │   ├── doc_status.py
+│   │   ├── exceptions.py
+│   │   ├── processor.py
+│   │   ├── prompt_manager.py
+│   │   └── query_processor.py
+│   │
+│   ├── storage/
+│   │   ├── __init__.py
+│   │   ├── file_system_storage.py
+│   │   ├── metadata_store.py
+│   │   ├── storage_interface.py
+│   │   ├── storage_manager.py
+│   │   └── vector_storage.py
+│   │
+│   ├── tests/*      
+│   ├── config.py
+│   ├── dependencies.py
+│   ├── main.py
+│   ├── models.py
+│   ├── requirements.txt
+│   └── test-server.ts
+│   
+├── public/
+│   ├── index.html
+│   ├── manifest.json
+│   ├── icon-192x192.png
+│   └── icon-512x512.png
+│
+├── src/
+│   ├── components/
+│   │   ├── chatbot.tsx
+│   │   ├── loading-overlay.tsx
+│   │   └── message.tsx
+│   │
+│   ├── services/
+│   │   ├── api.ts
+│   │   └── test-api.ts
+│   │
+│   ├── styles/
+│   │   ├── app.css
+│   │   └── loading-overlay.css
+│   │   
+│   ├── services/
+│   │   ├── api.ts
+│   │   ├── chat.ts
+│   │   └── documents.ts
+│   │
+│   ├── types/
+│   │   ├── chat.ts
+│   │   └── documents.ts
+│   │
+│   ├── utils/
+│   │   ├── formatting.ts
+│   │   └── validation.ts
+│   │
+│   ├── app.tsx
+│   └── index.tsx
+```
+
+## Key Components
+
+### Processing
+
+- **DocumentProcessor**: Handles document ingestion, text extraction, chunking, and embedding generation
+
+- **CompletionHandler**: Manages chat interactions using context from processed documents
+
+- **QueryProcessor**: Retrieves relevant document chunks for user queries
+
+- **PromptManager**: Handles prompt engineering and templating
+
+- **ConversationManager**: Maintains conversation history with automatic cleanup
+
+### Storage
+
+- **StorageManager**: Coordinates between different storage systems
+
+- **MetadataStore**: SQLAlchemy-based metadata storage
+
+- **FileSystemStorage**: Manages raw document storage
+
+- **VectorStorage**: Handles vector embeddings storage and similarity search
+
+### Frontend Components
+
+#### Components
+- **Chat**: Handles chat interface and message display
+- **Documents**: Manages document upload and processing status
+- **Common**: Reusable UI components
+
+#### Contexts
+- **ChatContext**: Manages chat state and history
+- **DocumentContext**: Handles document list and processing state
+
+#### Hooks
+- **useChat**: Chat functionality and message handling
+- **useDocuments**: Document upload and management
+- **useWebSocket**: Real-time updates for document processing
+
+#### Services
+- **api**: Base API configuration and helpers
+- **chat**: Chat-related API calls
+- **documents**: Document management API calls
+
+### Testing
+Comprehensive test coverage for both processing and storage components, using pytest with async support.
+
+## Dependencies
+- OpenAI API for embeddings and chat completions
+- SQLAlchemy for database management
+- Langchain for text splitting
+- Unstructured for document parsing
+- Python-Magic for MIME type detection
 
 ## Contributing
 
